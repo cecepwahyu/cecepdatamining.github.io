@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+        <title>Aplikasi Prediksi Dini Kanker Payudara</title>
+    </head>
+    <body
+        class="
+            flex flex-col
+            justify-between
+            item-center
+            p-8
+            min-h-screen
+            bg-gradient-to-r
+            from-green-400
+            to-blue-500
+            text-gray-800
+            md:flex-row
+        "
+    >
+        <main class="bg-white p-16 rounded-lg">
+            <h1 class="text-3xl font-bold mb-8">
+                Estimasi Kesehatan Payudara Anda:
+            </h1>
+
+            <form
+                action="{{ url_for('predict') }}"
+                method="post"
+                class="flex flex-col"
+            >
+                <label for="Age" class="mb-2">Age</label>
+                <input
+                    type="int"
+                    name="Age"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="BMI" class="mb-2">BMI</label>
+                <input
+                    type="float"
+                    name="BMI"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="Glucose" class="mb-2">Glucose</label>
+                <input
+                    type="int"
+                    name="Glucose"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="Insulin" class="mb-2">Insulin</label>
+                <input
+                    type="float"
+                    name="Insulin"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="HOMA" class="mb-2">HOMA</label>
+                <input
+                    type="float"
+                    name="HOMA"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="Leptin" class="mb-2">Leptin</label>
+                <input
+                    type="float"
+                    name="Leptin"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="Adiponectin" class="mb-2">Adiponectin</label>
+                <input
+                    type="float"
+                    name="Adiponectin"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="Resistin" class="mb-2">Resistin</label>
+                <input
+                    type="float"
+                    name="Resistin"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+                <label for="MCP1" class="mb-2">MCP1</label>
+                <input
+                    type="float"
+                    name="MCP1"
+                    placeholder=""
+                    required="required"
+                    class="p-4 bg-gray-100 rounded-md"
+                />
+
+                <button
+                    type="submit"
+                    class="
+                        flex
+                        justify-center
+                        align-center
+                        mt-8
+                        p-4
+                        bg-gradient-to-r
+                        from-green-400
+                        to-blue-500
+                        text-white
+                        rounded-md
+                    "
+                >
+                    PROSES ESTIMASI SEKARANG
+                    <svg
+                        xlmns="http://www.w3.org/2000/svg"
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="feather feather-arrow-right ml-4"
+                    >
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </button>
+            </form>
+        </main>
+        <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
+            <div class="bg-white p-16 rounded-lg">
+                <h1 class="text-2x1 mb-8">
+                    Estimasi Classification Kanker Payudara adalah
+                </h1>
+                <h2 class="text-5xl font-bold">Classification {{ Classification }}</h2>
+                {% if ( Classification ) != 0 %}
+                <div class="mt-8">
+                    <p>AGE: {{ Age }} </p>
+                    <p>BMI: {{ BMI }} </p>
+                    <p>GLUCOSE: {{ Glucose }} </p>
+                    <p>INSULIN: {{ Insulin }} </p>
+                    <p>HOMA: {{ HOMA }} </p>
+                    <p>LEPTIN: {{ Leptin }} </p>
+                    <p>ADIPONECTIN: {{ Adiponectin }} </p>
+                    <p>RESISTIN: {{ Resistin }} </p>
+                    <p>MCP1: {{ MCP1 }} </p>
+
+                </div>
+                {% endif %}
+            </div>
+        </section>
+    </body>
+</html>
