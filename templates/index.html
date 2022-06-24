@@ -26,7 +26,7 @@
     >
         <main class="bg-white p-16 rounded-lg">
             <h1 class="text-3xl font-bold mb-8">
-                Estimasi Kesehatan Payudara Anda:
+                Masukkan Riwayat Kesehatan Anda:
             </h1>
 
             <form
@@ -143,21 +143,31 @@
         </main>
         <section class="mt-8 h-full flex-auto rounded-lg md:mt-0 md:ml-8">
             <div class="bg-white p-16 rounded-lg">
-                <h1 class="text-2x1 mb-8">
-                    Estimasi Classification Kanker Payudara adalah
+                <h1 class="text-3xl mb-8">
+                    <b>Prediksi Kanker Payudara:</b>
                 </h1>
-                <h2 class="text-5xl font-bold">Classification {{ Classification }}</h2>
+                <h2 class="text-5xl font-bold">Anda terklasifikasi ({{ Classification }})
+                    {% if ( Classification ) == 1 %}
+                    <b class="font-bold">Negatif Kanker Payudara</b>
+                    {% elif ( Classification ) == 2 %}
+                    <b class="font-bold">Positif Kanker Payudara</b>
+                    {% endif %}                
+                </h2>
+                <div class="mt-8">
+                
+                </div>
                 {% if ( Classification ) != 0 %}
                 <div class="mt-8">
-                    <p>AGE: {{ Age }} </p>
-                    <p>BMI: {{ BMI }} </p>
-                    <p>GLUCOSE: {{ Glucose }} </p>
-                    <p>INSULIN: {{ Insulin }} </p>
-                    <p>HOMA: {{ HOMA }} </p>
-                    <p>LEPTIN: {{ Leptin }} </p>
-                    <p>ADIPONECTIN: {{ Adiponectin }} </p>
-                    <p>RESISTIN: {{ Resistin }} </p>
-                    <p>MCP1: {{ MCP1 }} </p>
+                    <b>Detail Riwayat Kesehatan Anda:</b>
+                    <p><b>AGE:</b> {{ Age }} </p>
+                    <p><b>BMI:</b> {{ BMI }} </p>
+                    <p><b>GLUCOSE:</b> {{ Glucose }} </p>
+                    <p><b>INSULIN:</b> {{ Insulin }} </p>
+                    <p><b>HOMA:</b> {{ HOMA }} </p>
+                    <p><b>LEPTIN:</b> {{ Leptin }} </p>
+                    <p><b>ADIPONECTIN:</b> {{ Adiponectin }} </p>
+                    <p><b>RESISTIN:</b> {{ Resistin }} </p>
+                    <p><b>MCP1:</b> {{ MCP1 }} </p>
 
                 </div>
                 {% endif %}
